@@ -1,1 +1,5 @@
 token.md
+target/test-classes/com/github/shinwaffle/discordbot/token.class
+src/test/java/com/github/shinwaffle/discordbot/token.java
+src/test/java/com/github/shinwaffle/discordbot/hastoken.java
+target/test-classes/com/github/shinwaffle/discordbot/hastoken.class
