@@ -1,12 +1,7 @@
 package com.github.shinwaffle.discordbot;
-
-/**
- * if you want testing stuff with junit
- * 
- * import static org.junit.Assert.*;    
- * 
- * import org.junit.Test;
- */
+ 
+import static org.junit.Assert.*; 
+import org.junit.Test;
 
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
