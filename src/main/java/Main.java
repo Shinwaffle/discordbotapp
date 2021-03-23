@@ -1,8 +1,3 @@
-package com.github.shinwaffle.discordbot;
- 
-import static org.junit.Assert.*; 
-import org.junit.Test;
-
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 
