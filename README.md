@@ -12,6 +12,7 @@ I'm using Visual Studio Basic as my IDE, Maven as my builder, JavaCord as my dep
 3. Keep a running list of people who say a phrase
 4. Retrieve info from a wiki, mc related
 5. Input a user query into stack exchange and print out X results
+6. Start a mc server using my discord bot
 
 ## Currently working on
 
