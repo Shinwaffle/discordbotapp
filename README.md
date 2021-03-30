@@ -20,5 +20,6 @@ I was doing the whole stackexchange wrong lmao. I was trying to do "explicit flo
 
 ## Currently working on
 
-Getting a command from the user with a query then inputting that.
-Also, probably looking into expanding the "quota" while accessing the stackexchange API
+A config file that stores various things, such as token and prefix.
+Have a file that stores all of my commands and have the bot check if the command exist
+Also, need a better way to find out user arguments
