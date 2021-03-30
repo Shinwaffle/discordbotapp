@@ -17,6 +17,7 @@ I'm using Visual Studio Basic as my IDE, Maven as my builder, JavaCord as my dep
 ## Notes
 
 I was doing the whole stackexchange wrong lmao. I was trying to do "explicit flow" and etc. while I was supposed to be doing an advanced GET search
+
 ## Currently working on
 
 Getting a command from the user with a query then inputting that
