@@ -1,17 +1,25 @@
-import kong.unirest.HttpResponse;
-import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
 
 public class HttpStatusRequest {
 
-    public JsonNode getResponse() {
-      HttpResponse<JsonNode> response = Unirest.post("http://httpbin.org/post")
-      .header("accept", "application/json")
-      .queryString("apiKey", "123")
-      .field("parameter", "value")
-      .field("firstname", "Gary")
-      .asJson();
+ 
+  String url = "https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=relevance&q=how%20to%20center%20div&answers=2&site=stackoverflow&filter=!9_bDE(fI5"; 
 
-      return response.getBody();
+  /**
+   * Probably should change the name of the class
+   * Also, currently I have it set to retrieve the JSON of the first answer.
+   */
+    public String getResponse() {
+     
+     Unirest.config().cookieSpec("standard");
+      String result = Unirest.get(url)
+      .asJson()
+      .getBody()
+      .getObject()
+      .getJSONArray("items")
+      .getJSONObject(0)
+      .toString();
+
+      return result;  
     }
 }

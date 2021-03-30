@@ -14,6 +14,10 @@ I'm using Visual Studio Basic as my IDE, Maven as my builder, JavaCord as my dep
 5. Input a user query into stack exchange and print out X results
 6. Start a mc server using my discord bot
 
+## Notes
+
+I was doing the whole stackexchange wrong lmao. I was trying to do "explicit flow" and etc. while I was supposed to be doing an advanced GET search
 ## Currently working on
 
-How to successfully "send a user" to stack exchange using explicit flow.
+Getting a command from the user with a query then inputting that
+Also, probably looking into expanding the "quota" while accessing the stackexchange API
