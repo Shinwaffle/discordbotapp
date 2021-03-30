@@ -20,5 +20,5 @@ I was doing the whole stackexchange wrong lmao. I was trying to do "explicit flo
 
 ## Currently working on
 
-Getting a command from the user with a query then inputting that
+Getting a command from the user with a query then inputting that.
 Also, probably looking into expanding the "quota" while accessing the stackexchange API
