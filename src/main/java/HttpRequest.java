@@ -19,7 +19,7 @@ public class HttpRequest {
       .getJSONObject(0)
       .getJSONArray("answers")
       .getJSONObject(index)
-      .getString("body");
+      .getString("body_markdown");
 
       return result;  
     }

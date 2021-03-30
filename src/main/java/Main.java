@@ -9,6 +9,7 @@ public class Main {
         
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
         HttpRequest s = new HttpRequest(); 
+        TopHackerStory d = new TopHackerStory();
 
         int[] indices = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29}; //there has to be a way better way of doing this lmao
         api.addMessageCreateListener(event -> {
@@ -16,11 +17,10 @@ public class Main {
             
             System.out.println(message);
             if (message.getContent().equalsIgnoreCase("!ping")) {
-                new MessageBuilder()
-                .append("Here's what I got: ")
-                .appendCode("md", s.getResponse(0)).send(event.getChannel());
+                event.getChannel().sendMessage(d.getTopStoryLink(0));
             }
             
+           
             for (int i = 0; i < 30; i++) {
                 if (message.getContent().equalsIgnoreCase("!ping "+indices[i])) {
                     new MessageBuilder()
