@@ -8,7 +8,7 @@ public class HttpRequest {
   /**
    * Also, currently I have it set to retrieve the JSON of the first answer.
    */
-    public String getResponse() {
+    public String getResponse(int index) {
      
      Unirest.config().cookieSpec("standard");
       String result = Unirest.get(url)
@@ -16,7 +16,7 @@ public class HttpRequest {
       .getBody()
       .getObject()
       .getJSONArray("items")
-      .getJSONObject(0)
+      .getJSONObject(index)
       .toString();
 
       return result;  
