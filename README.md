@@ -14,10 +14,6 @@ I'm using Visual Studio Basic as my IDE, Maven as my builder, JavaCord as my dep
 5. Input a user query into stack exchange and print out X results
 6. Start a mc server using my discord bot
 
-## Notes
-
-I was doing the whole stackexchange wrong lmao. I was trying to do "explicit flow" and etc. while I was supposed to be doing an advanced GET search
-
 ## Currently working on
 
 Check out the "Projects" tab to see what I'm working on
