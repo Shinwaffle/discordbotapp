@@ -20,6 +20,4 @@ I was doing the whole stackexchange wrong lmao. I was trying to do "explicit flo
 
 ## Currently working on
 
-A config file that stores various things, such as token and prefix.
-Have a file that stores all of my commands and have the bot check if the command exist
-Also, need a better way to find out user arguments
+Check out the "Projects" tab to see what I'm working on
