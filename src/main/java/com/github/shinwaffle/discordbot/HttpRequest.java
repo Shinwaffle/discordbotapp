@@ -1,3 +1,5 @@
+package com.github.shinwaffle.discordbot;
+
 import kong.unirest.Unirest;
 
 public class HttpRequest {

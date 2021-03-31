@@ -1,3 +1,5 @@
+package com.github.shinwaffle.discordbot;
+
 import java.io.FileInputStream;
 import java.util.Properties;
 
