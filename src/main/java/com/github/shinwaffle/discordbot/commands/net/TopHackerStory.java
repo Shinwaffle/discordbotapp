@@ -27,6 +27,9 @@ public class TopHackerStory extends Command {
         
       try {
         startIndex = Integer.valueOf(args[1]);
+        if (startIndex != 0) {
+          startIndex--;
+        }
       } catch (ArrayIndexOutOfBoundsException e) {
         startIndex = 0;
       }
