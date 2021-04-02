@@ -1,9 +1,12 @@
 package com.github.shinwaffle.discordbot.commands.net;
 
+import com.github.shinwaffle.discordbot.commands.Command;
+
 import kong.unirest.Unirest;
 
-public class StackExAnswers {
+public class StackExAnswers extends Command {
 
+    public String test = "test";
  /**
   * when fleshing out this function, make sure to set the url to static and
   * replace the original query with {query} to insert parameters.
@@ -28,4 +31,9 @@ public class StackExAnswers {
 
       return result;  
     }
+
+  @Override
+  public String getDescription() {
+    return "stackex test";
+  }
 }
