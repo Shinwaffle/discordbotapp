@@ -21,7 +21,7 @@ public class Main {
         FileInputStream ip = new FileInputStream("config.properties");
         prop.load(ip);
         //String prefix = prop.getProperty("prefix"); not used
-        String token = Secret.token;
+        String token = "";
         
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
 
