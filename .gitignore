@@ -1,3 +1,4 @@
 config.properties
 src/main/java/com/github/shinwaffle/discordbot/main/Secret.java
 target/classes/com/github/shinwaffle/discordbot/main/Secret.class
+target/classes/com/github/shinwaffle/discordbot/main/Main.class

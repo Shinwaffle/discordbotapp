@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.github.shinwaffle.discordbot.commands.Command;
 
+import org.javacord.api.entity.message.Message;
+
 import kong.unirest.Unirest;
 
 public class TopHackerStory extends Command {
@@ -13,15 +15,16 @@ public class TopHackerStory extends Command {
 
     public String test = "test";
     
-    public Map<String, String> getTopStoryLink(String[] args) {
+    public Map<String, String> getTopStoryLink(Message message) {
 
       int noOfStories;
       int startIndex;
       Map<String, String> stories = new HashMap<>();
-
+      String[] args = message.getContent().substring(17).trim().split(" ");
+      
       try {
         noOfStories = Integer.valueOf(args[0]);
-      } catch (ArrayIndexOutOfBoundsException e) {
+      } catch (Exception e) {
         noOfStories = 1;
       }
         
@@ -30,7 +33,7 @@ public class TopHackerStory extends Command {
         if (startIndex != 0) {
           startIndex--;
         }
-      } catch (ArrayIndexOutOfBoundsException e) {
+      } catch (Exception e) {
         startIndex = 0;
       }
         

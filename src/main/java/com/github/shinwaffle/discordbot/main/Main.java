@@ -42,14 +42,12 @@ public class Main {
              * how to do one
              */
             System.out.println(message);
-            if (message.getContent().startsWith("!tophackerstories")) {
-                String[] test = message.getContent().substring(17).trim().split(" ");
-                    for(Map.Entry<String, String> values : d.getTopStoryLink(test).entrySet()) {
-                        event.getChannel().sendMessage(values.getKey()+ "\n" +values.getValue());
-                    }
+            if (message.getContent().startsWith("!tophackerstories")) {          
+                for(Map.Entry<String, String> values : d.getTopStoryLink(message).entrySet()) {
+                    event.getChannel().sendMessage(values.getKey()+ "\n" +values.getValue());
+                }
             }
             
-           
             for (int i = 0; i < 30; i++) {
                 if (message.getContent().equalsIgnoreCase("!ping "+indices[i])) {
                     new MessageBuilder()
