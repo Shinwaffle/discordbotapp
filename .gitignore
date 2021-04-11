@@ -1,6 +1,9 @@
 *.iml
 *.ipr
-.idea/
+.idea
 .classpath
 .factorypath
 .project
+.run
+target
+logs
