@@ -25,13 +25,13 @@ public class TopHackerStory extends Command {
       String[] args = message.getContent().substring(17).trim().split(" ");
       
       try {
-        noOfStories = Integer.valueOf(args[0]);
+        noOfStories = Integer.parseInt(args[0]);
       } catch (Exception e) {
         noOfStories = 1;
       }
         
       try {
-        startIndex = Integer.valueOf(args[1]);
+        startIndex = Integer.parseInt(args[1]);
         if (startIndex != 0) {
           startIndex--;
         }
@@ -39,10 +39,10 @@ public class TopHackerStory extends Command {
         startIndex = 0;
       }
         
-        /**
-         * First line gets the ID of the top story.
-         * The second line gets the url
-         * maps title to key and url to value
+        /*
+          First line gets the ID of the top story.
+          The second line gets the url
+          maps title to key and url to value
          */
         for (int i  = 0; i < noOfStories; i++) {
         String topStoryId = Unirest.get(URL)
