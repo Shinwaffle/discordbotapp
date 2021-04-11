@@ -16,7 +16,7 @@ public class Main {
     
     public static void main(String[] args) {
 
-        String token = "ODIzNTUwNzAxMTk5ODE4NzYz.YFidWw.x9i3BLPma2g8BkRW69bNaNrIYw4";
+        String token = "";
         
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
         StackExAnswers s = new StackExAnswers();
