@@ -1,11 +1,13 @@
 package com.github.shinwaffle.discordbot.main;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.Map;
 import java.util.Properties;
 
 import com.github.shinwaffle.discordbot.commands.net.StackExAnswers;
 import com.github.shinwaffle.discordbot.commands.net.TopHackerStory;
+import com.github.shinwaffle.discordbot.util.CommandHandler;
 
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
@@ -14,21 +16,19 @@ import org.javacord.api.entity.message.MessageBuilder;
 
 public class Main {
     
-    public static long id;
     public static void main(String[] args) throws Exception {
 
         Properties prop = new Properties();
         FileInputStream ip = new FileInputStream("config.properties");
         prop.load(ip);
+
         //String prefix = prop.getProperty("prefix"); not used
         String token = "";
         
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
 
-        id = api.getClientId();
-
-        //CommandHandler ch = new CommandHandler();
         //temporary for functionality, move to commandhandler
+        CommandHandler cum = new CommandHandler();
         TopHackerStory d = new TopHackerStory();
         StackExAnswers s = new StackExAnswers();
 
@@ -42,10 +42,13 @@ public class Main {
              * how to do one
              */
             System.out.println(message);
-            if (message.getContent().startsWith("!tophackerstories")) {          
+            if (message.getContent().startsWith("s")) {  
+                event.getChannel().sendMessage(cum.read());
+                /*        
                 for(Map.Entry<String, String> values : d.getTopStoryLink(message).entrySet()) {
                     event.getChannel().sendMessage(values.getKey()+ "\n" +values.getValue());
                 }
+                */
             }
             
             for (int i = 0; i < 30; i++) {
