@@ -17,7 +17,7 @@ public class StackExAnswers extends Command {
 
   @Override 
   public String getCommand() {
-    return "stackanswers";
+    return "stackex";
   }
   
   @Override
