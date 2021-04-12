@@ -3,7 +3,7 @@ package com.github.shinwaffle.discordbot.commands.net;
 import com.github.shinwaffle.discordbot.util.Command;
 
 import org.javacord.api.entity.channel.Channel;
-import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.user.User;
 
 import kong.unirest.Unirest;
@@ -21,8 +21,8 @@ public class StackExAnswers extends Command {
   }
   
   @Override
-  public String execute(String[] args, Channel channel, User author, Message message) {
-    return "lol";
+  public MessageBuilder execute(String[] args, Channel channel, User author) {
+    return null;
   }
  /**
   * when fleshing out this function, make sure to set the url to static and

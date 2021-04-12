@@ -1,7 +1,7 @@
 package com.github.shinwaffle.discordbot.util;
 
 import org.javacord.api.entity.channel.Channel;
-import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.user.User;
 
 public abstract class Command {
@@ -19,5 +19,5 @@ public abstract class Command {
     /**
      * return the message or nothing
      */
-    public abstract String execute(String[] args, Channel channel, User author, Message message);
+    public abstract MessageBuilder execute(String[] args, Channel channel, User author);
 }

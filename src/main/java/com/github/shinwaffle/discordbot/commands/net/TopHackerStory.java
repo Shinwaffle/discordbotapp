@@ -7,6 +7,7 @@ import com.github.shinwaffle.discordbot.util.Command;
 
 import org.javacord.api.entity.channel.Channel;
 import org.javacord.api.entity.message.Message;
+import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.user.User;
 
 import kong.unirest.Unirest;
@@ -16,7 +17,7 @@ public class TopHackerStory extends Command {
     
     private static final String URL = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
 
-    
+
     public Map<String, String> getTopStoryLink(Message message) {
 
       int noOfStories;
@@ -70,8 +71,9 @@ public class TopHackerStory extends Command {
         }
         return stories;
     }
+
     @Override
-  public String getDescription() {
+    public String getDescription() {
     return "tophackerstories test";
   }
     @Override
@@ -79,7 +81,7 @@ public class TopHackerStory extends Command {
       return "tophackerstories";
     }
     @Override
-    public String execute(String[] args, Channel channel, User author, Message message) {
-      return "lol";
+    public MessageBuilder execute(String[] args, Channel channel, User author) {
+      return null;
     }
 }

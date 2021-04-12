@@ -1,49 +1,47 @@
 package com.github.shinwaffle.discordbot.main;
 
-import com.github.shinwaffle.discordbot.commands.net.StackExAnswers;
-
-import com.github.shinwaffle.discordbot.commands.net.TopHackerStory;
-import com.github.shinwaffle.discordbot.util.CommandHandler;
+import com.github.shinwaffle.discordbot.handlers.CommandHandler;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.message.Message;
-import org.javacord.api.entity.message.MessageBuilder;
-
-import java.util.Collection;
-import java.util.Map;
-
 public class Main {
-    
+
+    public static final String PREFIX = "!"; //dynamically change this later
+    public static Long botclientid;
+
     public static void main(String[] args) {
 
+        /*
+         *
+         * Delete this token after using
+         *
+         */
         String token = "";
-        
+        /*
+         *
+         * Or else you're gonna get a message from Safety Jim
+         *
+         */
+
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
-        StackExAnswers s = new StackExAnswers();
-        TopHackerStory top = new TopHackerStory();
-        CommandHandler ch = new CommandHandler();
-
-        int[] indices = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29}; //there has to be a way better way of doing this lmao
-
-
+        botclientid = api.getClientId();
+        CommandHandler ch = new CommandHandler(botclientid);
+        System.out.println(api.getClientId());
 
         api.addMessageCreateListener(event -> {
             Message message = event.getMessage();
             System.out.println(message);
-            
-            for (int i = 0; i < 30; i++) {
-                if (message.getContent().equalsIgnoreCase("!ping "+indices[i])) {
-                    new MessageBuilder()
-                    .append("Here's what I got: ")
-                    .appendCode("html", s.getResponse(i)).send(event.getChannel());
+
+             
+                    if (!message.getMentionedUsers().isEmpty() && message.getMentionedUsers().get(0).getId() == botclientid) {
+                        ch.execute(message);
+                    }
+                
+                if (message.getContent().startsWith("!")) {
+                    ch.execute(message);
                 }
-            }
-            
-            message.addReactionAddListener(msg -> {
-                if(msg.getEmoji().equalsEmoji("💯")) {
-                    event.deleteMessage("Disappearing act");
-                }
-            });                   
+
+
         });
         
         System.out.println("Bot is running, "+api.createBotInvite());
