@@ -5,5 +5,7 @@
 .factorypath
 .project
 .run
+.settings
+.replit
 target
 logs
