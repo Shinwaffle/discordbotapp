@@ -11,17 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*
-         *
-         * Delete this token after using
-         *
-         */
-        String token = "";
-        /*
-         *
-         * Or else you're gonna get a message from Safety Jim
-         *
-         */
+        String token = args[0];
 
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
         botclientid = api.getClientId();
