@@ -19,7 +19,7 @@ public class TopHackerStory extends Command {
 
     @Override
     public String getDescription() {
-        return null;
+        return "Retrieves top stories from Hacker News!";
     }
 
     @Override
@@ -30,6 +30,7 @@ public class TopHackerStory extends Command {
                 .setColor(Color.RED)
                 .setTitle("Top Hacker Stories Usage")
                 .setDescription("Returns top stories from https://news.ycombinator.com/news")
+                .addField("Exceptions", "Word arguments such as \"one\" will cause the function to return the top story")
                 .addField("Amount of stories", "The first argument returns how many top stories you want. The bot will return a max of 5")
                 .addField("Where to start", "The second argument will start returning top stories from given index. See example usage")
                 .addField("Example Usage", """
@@ -52,49 +53,38 @@ public class TopHackerStory extends Command {
     @Override
     public void execute(String[] args, TextChannel channel, User author) {
 
-        int noOfStories;
-        int startIndex;
+        int noOfStories = 1;
+        int startIndex = 0;
+        var indices = new int[2];
         Map<String, String> stories = new HashMap<>();
-        try {
-            if (args[1].equalsIgnoreCase("help") || args[1].equalsIgnoreCase("?")) {
-                channel.sendMessage(getDescriptionEmbed());
-            }
-        } catch (ArrayIndexOutOfBoundsException ignored) {
-        }
 
-        try {
-            noOfStories = Integer.parseInt(args[1]);
-            if (noOfStories > 5) noOfStories = 5;
-            if (noOfStories == 0) noOfStories = 1;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            noOfStories = 1;
-        } catch (NumberFormatException e) {
+        if (args.length == 2 &&
+                (args[1].equalsIgnoreCase("help")
+                        || args[1].equalsIgnoreCase("?"))) {
+            channel.sendMessage(getDescriptionEmbed());
             return;
+        } else {
+            indices = processArgs(args);
+            noOfStories = indices[0];
+            startIndex = indices[1];
         }
 
-        try {
-            startIndex = Integer.parseInt(args[2]);
-            if (startIndex != 0) startIndex--;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            startIndex = 0;
-        }
-
-        for (int i = 0; i < noOfStories; i++) {
-            String topStoryId = Unirest.get(URL)
+        for (var i = 0; i < noOfStories; i++) {
+            var topStoryId = Unirest.get(URL)
                     .asJson()
                     .getBody()
                     .getArray()
                     .get(startIndex + i)
                     .toString();
 
-            String topStoryTitle = Unirest.get("https://hacker-news.firebaseio.com/v0/item/{id}.json?print=pretty")
+            var topStoryTitle = Unirest.get("https://hacker-news.firebaseio.com/v0/item/{id}.json?print=pretty")
                     .routeParam("id", topStoryId)
                     .asJson()
                     .getBody()
                     .getObject()
                     .getString("title");
 
-            String topStoryLink = Unirest.get("https://hacker-news.firebaseio.com/v0/item/{id}.json?print=pretty")
+            var topStoryLink = Unirest.get("https://hacker-news.firebaseio.com/v0/item/{id}.json?print=pretty")
                     .routeParam("id", topStoryId)
                     .asJson()
                     .getBody()
@@ -104,11 +94,37 @@ public class TopHackerStory extends Command {
             stories.put(topStoryTitle, topStoryLink);
         }
 
-        MessageBuilder msg = new MessageBuilder();
+        var msg = new MessageBuilder();
         for (Map.Entry<String, String> s : stories.entrySet()) {
             msg.append(s.getKey() + " " + s.getValue() + "\n\n");
         }
         msg.send(channel);
+    }
 
+    /**
+     * Execute helper function
+     *
+     * @param args arguments used in execute function
+     * @return returnArgs processed arguments
+     */
+    private int[] processArgs(String[] args) {
+        var returnArgs = new int[2];
+
+        try {
+            returnArgs[0] = Integer.parseInt(args[1]);
+        } catch (Exception e) {
+            returnArgs[0] = 1;
+            return returnArgs;
+        }
+
+        if (returnArgs[0] > 5) returnArgs[0] = 5;
+        if (returnArgs[0] == 0) returnArgs[0] = 1;
+
+        if (args.length > 2) {
+            returnArgs[1] = Integer.parseInt(args[2]);
+            if (returnArgs[1] != 0) returnArgs[1]--;
+        }
+
+        return returnArgs;
     }
 }

@@ -1,7 +1,6 @@
 package com.github.shinwaffle.discordbot.util;
 
 import com.github.shinwaffle.discordbot.handlers.CommandHandler;
-import org.javacord.api.entity.message.Message;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.javacord.api.listener.message.MessageCreateListener;
 
@@ -9,7 +8,7 @@ import static com.github.shinwaffle.discordbot.main.Main.PREFIX;
 
 public class Listener implements MessageCreateListener {
 
-    private long botclientid = 0;
+    private final long botclientid;
 
     public Listener(long botclientid) {
         this.botclientid = botclientid;
@@ -17,9 +16,9 @@ public class Listener implements MessageCreateListener {
 
     @Override
     public void onMessageCreate(MessageCreateEvent event) {
-        Message message = event.getMessage();
+        var message = event.getMessage();
         System.out.println(message);
-        CommandHandler ch = new CommandHandler(botclientid);
+        var ch = new CommandHandler(botclientid);
 
         if (!message.getMentionedUsers().isEmpty() && message.getMentionedUsers().get(0).getId() == botclientid) {
             ch.execute(message);

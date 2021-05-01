@@ -1,8 +1,8 @@
 package com.github.shinwaffle.discordbot.main;
 
 import com.github.shinwaffle.discordbot.util.Listener;
-import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
+import org.javacord.api.entity.user.UserStatus;
 
 public class Main {
 
@@ -10,8 +10,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String token = args[0];
-        DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
+        var token = args[0];
+        var api = new DiscordApiBuilder().setToken(token).login().join();
+        api.updateStatus(UserStatus.DO_NOT_DISTURB);
+        api.updateActivity("Remember to use exit");
         final long botclientid = api.getClientId();
         api.addListener(new Listener(botclientid));
         System.out.println("Bot is running, " + api.createBotInvite());

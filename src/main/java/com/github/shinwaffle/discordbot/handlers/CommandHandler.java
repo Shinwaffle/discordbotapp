@@ -8,8 +8,8 @@ import com.github.shinwaffle.discordbot.exceptions.ClientIDMissingException;
 import com.github.shinwaffle.discordbot.main.Main;
 import com.github.shinwaffle.discordbot.util.Command;
 import org.javacord.api.entity.message.Message;
-import org.reflections.Reflections;
 
+import org.reflections.Reflections;
 
 public class CommandHandler {
 
@@ -29,6 +29,8 @@ public class CommandHandler {
 
     /**
      * Finds the correct command for the message.
+     *
+     * @param message, presumably a command to execute with corresponding class
      */
     public void execute(Message message) {
         String[] args = parse(message);
@@ -60,7 +62,7 @@ public class CommandHandler {
      * Initializes commands
      */
     private void initializeCommands() {
-        Reflections reflections = new Reflections("com.github.shinwaffle.discordbot.commands");
+        var reflections = new Reflections("com.github.shinwaffle.discordbot.commands");
         Set<Class<? extends Command>> classes = reflections.getSubTypesOf(Command.class);
 
         try {

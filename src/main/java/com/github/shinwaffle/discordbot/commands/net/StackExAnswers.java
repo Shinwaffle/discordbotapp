@@ -36,15 +36,17 @@ public class StackExAnswers extends Command {
     @Override
     public void execute(String[] args, TextChannel channel, User author) {
 
+
         try {
             if (args[1].equalsIgnoreCase("help") || args[1].equalsIgnoreCase("?")) {
                 channel.sendMessage(getDescriptionEmbed());
             }
-        } catch (ArrayIndexOutOfBoundsException ignored) {}
+        } catch (ArrayIndexOutOfBoundsException ignored) {
+        }
 
         String answer;
         try {
-            int index = Integer.parseInt(args[2]);
+            var index = Integer.parseInt(args[2]);
 
             answer = Unirest.get(URL)
                     .asJson()
