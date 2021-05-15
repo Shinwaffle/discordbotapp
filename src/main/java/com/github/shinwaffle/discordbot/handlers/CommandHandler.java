@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.HashMap;
 
-import com.github.shinwaffle.discordbot.exceptions.ClientIDMissingException;
 import com.github.shinwaffle.discordbot.main.Main;
 import com.github.shinwaffle.discordbot.util.Command;
 import org.javacord.api.entity.message.Message;
@@ -19,7 +18,7 @@ public class CommandHandler {
 
 
     public CommandHandler() {
-        throw new ClientIDMissingException("Client ID is missing!");
+        throw new IllegalArgumentException("Client ID is missing!");
     }
 
     public CommandHandler(Long botClientID) {
@@ -43,7 +42,7 @@ public class CommandHandler {
      * Processes a message and returns the arguments
      *
      * @param message to be parsed
-     * @return returns a String array where first element is command and afterwards arguments
+     * @return a String array where first element is command and afterwards arguments
      */
     private String[] parse(Message message) {
         String msg = message.getContent();
